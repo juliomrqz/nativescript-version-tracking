@@ -2,7 +2,6 @@
 [![Travis](https://img.shields.io/travis/bazzite/nativescript-version-tracking/master.svg)](https://travis-ci.org/bazzite/nativescript-version-tracking)
 [![version](https://img.shields.io/npm/v/nativescript-version-tracking.svg)](https://www.npmjs.com/package/nativescript-version-tracking)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://www.bazzite.com/docs/nativescript-version-tracking/license?utm_source=github&utm_medium=readme&utm_campaign=nativescript-version-tracking)
-(https://app.fossa.io/projects/git%2Bgithub.com%2Fbazzite%2Fnativescript-version-tracking?ref=badge_shield)
 [![Greenkeeper badge](https://badges.greenkeeper.io/bazzite/nativescript-version-tracking.svg)](https://greenkeeper.io/)
 
 # [WIP] NativeScript Version Tracking
