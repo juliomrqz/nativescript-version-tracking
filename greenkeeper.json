@@ -1,14 +1,14 @@
 {
-    "groups": {
-      "core": {
-        "packages": [
-          "src/package.json"
-        ]
-      },
-      "demo": {
-        "packages": [
-          "demo/package.json"
-        ]
-      }
+  "groups": {
+    "core": {
+      "packages": [
+        "src/package.json"
+      ]
+    },
+    "demo": {
+      "packages": [
+        "demo/package.json"
+      ]
     }
   }
+}
