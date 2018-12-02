@@ -1,28 +1,117 @@
-import { Observable } from 'tns-core-modules/data/observable';
-import * as app from 'tns-core-modules/application';
-import * as dialogs from 'tns-core-modules/ui/dialogs';
+import * as appSettings from 'tns-core-modules/application-settings';
 
-export class Common extends Observable {
-  public message: string;
+interface IVersionTracking {
+  initialized: boolean;
 
-  constructor() {
-    super();
-    this.message = Utils.SUCCESS_MSG();
-  }
+  isFirstLaunchEver: boolean;
+  isFirstLaunchForVersion: boolean;
+  isFirstLaunchForBuild: boolean;
 
-  public greet() {
-    return "Hello, NS";
-  }
+  versionHistory: Array<string>;
+  currentVersion: string;
+  previousVersion: string;
+  firstInstalledVersion: string;
+
+  buildHistory: Array<string>;
+  currentBuild: string;
+  previousBuild: string;
+  firstInstalledBuild: string;
+
+  init(versionsKey?: string, buildsKey?: string): void;
+  firstLaunchForVersion(version: string): boolean;
+  firstLaunchForBuild(build: string): boolean;
 }
 
-export class Utils {
-  public static SUCCESS_MSG(): string {
-    let msg = `Your plugin is working on ${app.android ? 'Android' : 'iOS'}.`;
+export const keys = {
+  versions: 'tnsVersion',
+  builds: 'tnsBuild'
+};
 
-    setTimeout(() => {
-      dialogs.alert(`${msg} For real. It's really working :)`).then(() => console.log(`Dialog closed.`));
-    }, 2000);
+export const init = (versionTracking: IVersionTracking, versionsKey: string, buildsKey: string) => {
+  // load history
+  let versionTrail: { [key: string]: Array<string> } = {};
 
-    return msg;
+  const oldVersionList: Array<string> = JSON.parse(appSettings.getString(versionsKey));
+  const oldBuildList: Array<string> = JSON.parse(appSettings.getString(buildsKey));
+
+  if (oldVersionList == null || oldBuildList == null) {
+    versionTracking.isFirstLaunchEver = true;
+
+    versionTrail[versionsKey] = [];
+    buildsKey[buildsKey] = [];
+  } else {
+    versionTrail[versionsKey] = oldVersionList;
+    buildsKey[buildsKey] = oldBuildList;
+
+    versionTracking.isFirstLaunchEver = false;
   }
-}
+
+  // check if this version was previously launched
+  if (versionTrail[versionsKey].includes(versionTracking.currentVersion)) {
+    versionTracking.isFirstLaunchForVersion = false;
+  } else {
+    versionTracking.isFirstLaunchForVersion = true;
+
+    versionTrail[versionsKey].push(versionTracking.currentVersion);
+  }
+
+  // check if this build was previously launched
+  if (versionTrail[buildsKey].includes(versionTracking.currentVersion)) {
+
+    versionTracking.isFirstLaunchForBuild = false;
+
+  } else {
+    versionTracking.isFirstLaunchForBuild = true;
+
+    versionTrail[buildsKey].push(versionTracking.currentBuild);
+  }
+
+  // Previous Version
+  const totalVersions = versionTrail[versionsKey].length;
+  versionTracking.previousVersion = (totalVersions >= 2) ? versionTrail[versionsKey][totalVersions - 2] : null;
+
+  // First Installed Version
+  versionTracking.firstInstalledVersion = versionTrail[versionsKey][0] || null;
+
+  // Previous Build
+  const countBuilds = versionTrail[buildsKey].length;
+  versionTracking.previousBuild = (countBuilds >= 2) ? versionTrail[buildsKey][countBuilds - 2] : null;
+
+  // first Installed Build
+  versionTracking.firstInstalledBuild = versionTrail[buildsKey][0] || null;
+
+  // store the new version stuff
+  appSettings.getString(versionsKey, JSON.stringify(versionTrail[versionsKey]));
+  appSettings.getString(buildsKey, JSON.stringify(versionTrail[buildsKey]));
+
+  // return instance
+  return versionTracking;
+};
+
+export const versionTracking: IVersionTracking = {
+  initialized: false,
+
+  isFirstLaunchEver: null,
+  isFirstLaunchForVersion: null,
+  isFirstLaunchForBuild: null,
+
+  versionHistory: [],
+  currentVersion: null,
+  previousVersion: null,
+  firstInstalledVersion: null,
+
+  buildHistory: [],
+  currentBuild: null,
+  previousBuild: null,
+  firstInstalledBuild: null,
+
+  init: () => null,
+
+  firstLaunchForVersion: (version: string) => {
+    return versionTracking.currentVersion.toLowerCase() === version.toLocaleLowerCase() && versionTracking.isFirstLaunchForVersion;
+  },
+
+  firstLaunchForBuild: (build: string) => {
+    return versionTracking.currentBuild.toLowerCase() === build.toLocaleLowerCase() && versionTracking.isFirstLaunchForBuild;
+  }
+};
