@@ -22,11 +22,6 @@ interface IVersionTracking {
   firstLaunchForBuild(build: string): boolean;
 }
 
-export const keys = {
-  versions: 'tnsVersion',
-  builds: 'tnsBuild'
-};
-
 export const init = (versionTracking: IVersionTracking, versionsKey: string, buildsKey: string) => {
   // load history
   let versionTrail: { [key: string]: Array<string> } = {};

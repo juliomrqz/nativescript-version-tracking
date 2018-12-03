@@ -1,7 +1,7 @@
-import { versionTracking, keys, init } from './version-tracking.common';
+import { versionTracking, init } from './version-tracking.common';
 
 
-versionTracking.init = (versionsKey = keys.versions, buildsKey = keys.builds) => {
+versionTracking.init = (versionsKey = 'tnsVersion', buildsKey = 'tnsBuild') => {
   if (versionTracking.initialized) {
     throw new Error('Version Tracking already initialized');
   }
