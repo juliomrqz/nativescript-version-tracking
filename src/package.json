@@ -1,6 +1,6 @@
 {
     "name": "nativescript-version-tracking",
-    "version": "0.1.0-alpha.1",
+    "version": "0.1.0",
     "description": "Track which versions of your NativeScript App a user has previously installed.",
     "main": "version-tracking",
     "typings": "index.d.ts",
