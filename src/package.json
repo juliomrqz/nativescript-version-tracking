@@ -1,7 +1,7 @@
 {
     "name": "nativescript-version-tracking",
     "version": "0.1.0-alpha.1",
-    "description": "Your awesome NativeScript plugin.",
+    "description": "Track which versions of your NativeScript App a user has previously installed.",
     "main": "version-tracking",
     "typings": "index.d.ts",
     "nativescript": {
@@ -11,7 +11,7 @@
         }
     },
     "scripts": {
-        "tsc": "tsc",
+        "tsc": "npx tsc",
         "build": "npm run tsc && npm run build.native",
         "build.native": "node scripts/build-native.js",
         "postclone": "npm i && node scripts/postclone.js && cd ../demo && npm i && npx rimraf -- package-lock.json && cd ../src",
@@ -31,16 +31,23 @@
         "NativeScript",
         "JavaScript",
         "Android",
-        "iOS"
+        "iOS",
+        "version"
     ],
     "author": {
-        "name": "Your Name",
-        "email": "youremail@yourdomain.com"
+        "name": "Bazzite",
+        "email": "support@bazzite.com",
+        "url": "https://www.bazzite.com"
     },
+    "contributors": [
+        {
+            "name": "Julio Marquez (@juliomrqz)"
+        }
+    ],
     "bugs": {
         "url": "https://github.com/bazzite/nativescript-version-tracking/issues"
     },
-    "license": "Apache-2.0",
+    "license": "MIT",
     "homepage": "https://github.com/bazzite/nativescript-version-tracking",
     "readmeFilename": "README.md",
     "devDependencies": {
