@@ -57,9 +57,7 @@ export const init = (versionTracking: IVersionTracking, versionsKey: string, bui
 
   // check if this build was previously launched
   if (versionTrail[buildsKey].includes(versionTracking.currentVersion)) {
-
     versionTracking.isFirstLaunchForBuild = false;
-
   } else {
     versionTracking.isFirstLaunchForBuild = true;
 
@@ -68,14 +66,16 @@ export const init = (versionTracking: IVersionTracking, versionsKey: string, bui
 
   // Previous Version
   const totalVersions = versionTrail[versionsKey].length;
-  versionTracking.previousVersion = (totalVersions >= 2) ? versionTrail[versionsKey][totalVersions - 2] : null;
+  versionTracking.previousVersion =
+    totalVersions >= 2 ? versionTrail[versionsKey][totalVersions - 2] : null;
 
   // First Installed Version
   versionTracking.firstInstalledVersion = versionTrail[versionsKey][0] || null;
 
   // Previous Build
-  const countBuilds = versionTrail[buildsKey].length;
-  versionTracking.previousBuild = (countBuilds >= 2) ? versionTrail[buildsKey][countBuilds - 2] : null;
+  const totalBuilds = versionTrail[buildsKey].length;
+  versionTracking.previousBuild =
+    totalBuilds >= 2 ? versionTrail[buildsKey][totalBuilds - 2] : null;
 
   // first Installed Build
   versionTracking.firstInstalledBuild = versionTrail[buildsKey][0] || null;
@@ -83,9 +83,6 @@ export const init = (versionTracking: IVersionTracking, versionsKey: string, bui
   // store the new version stuff
   appSettings.getString(versionsKey, JSON.stringify(versionTrail[versionsKey]));
   appSettings.getString(buildsKey, JSON.stringify(versionTrail[buildsKey]));
-
-  // return instance
-  return versionTracking;
 };
 
 export const versionTracking: IVersionTracking = {
@@ -108,10 +105,10 @@ export const versionTracking: IVersionTracking = {
   init: () => null,
 
   firstLaunchForVersion: (version: string) => {
-    return versionTracking.currentVersion.toLowerCase() === version.toLocaleLowerCase() && versionTracking.isFirstLaunchForVersion;
+    return versionTracking.currentVersion.toLowerCase() === version.toLowerCase() && versionTracking.isFirstLaunchForVersion;
   },
 
   firstLaunchForBuild: (build: string) => {
-    return versionTracking.currentBuild.toLowerCase() === build.toLocaleLowerCase() && versionTracking.isFirstLaunchForBuild;
+    return versionTracking.currentBuild.toLowerCase() === build.toLowerCase() && versionTracking.isFirstLaunchForBuild;
   }
 };
