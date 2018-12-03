@@ -1,6 +1,62 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
   xmlns:ui="nativescript-version-tracking">
   <StackLayout class="p-20">
-    <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Label text="NativeScript Version Tracking" class="t-20 text-center c-black m-b-20" textWrap="true"/>
+
+    <StackLayout orientation="horizontal">
+      <Label text="isFirstLaunchEver: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ isFirstLaunchEver }}" class="text-center"/>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label text="isFirstLaunchForVersion: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ isFirstLaunchForVersion }}" class="text-center"/>
+    </StackLayout>
+    <StackLayout orientation="horizontal" class="m-b-10">
+      <Label text="isFirstLaunchForBuild: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ isFirstLaunchForBuild }}" class="text-center"/>
+    </StackLayout>
+
+    <StackLayout orientation="horizontal">
+      <Label text="currentVersion: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ currentVersion }}" class="text-center"/>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label text="previousVersion: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ previousVersion }}" class="text-center"/>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label text="firstInstalledVersion: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ firstInstalledVersion }}" class="text-center"/>
+    </StackLayout>
+    <StackLayout orientation="horizontal" class="m-b-10">
+      <Label text="versionHistory: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ versionHistory }}" class="text-center"/>
+    </StackLayout>
+
+    <StackLayout orientation="horizontal">
+      <Label text="currentBuild: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ currentBuild }}" class="text-center"/>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label text="previousBuild: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ previousBuild }}" class="text-center"/>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label text="firstInstalledBuild: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ firstInstalledBuild }}" class="text-center"/>
+    </StackLayout>
+    <StackLayout orientation="horizontal" class="m-b-10">
+      <Label text="buildHistory: " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ buildHistory }}" class="text-center"/>
+    </StackLayout>
+
+    <StackLayout orientation="horizontal">
+      <Label text="firstLaunchForVersion('2.0.0'): " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ firstLaunchForVersion }}" class="text-center"/>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label text="firstLaunchForBuild('200'): " class="text-center font-weight-bold" textWrap="true"/>
+      <Label text="{{ firstLaunchForBuild }}" class="text-center"/>
+    </StackLayout>
   </StackLayout>
 </Page>
