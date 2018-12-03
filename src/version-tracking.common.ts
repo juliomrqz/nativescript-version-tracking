@@ -3,22 +3,83 @@ import * as appSettings from 'tns-core-modules/application-settings';
 interface IVersionTracking {
   initialized: boolean;
 
+  /**
+   * Check if this is the first time ever that the app is launched.
+   */
   isFirstLaunchEver: boolean;
+
+  /**
+   * Check if this is the first time the current version is being launched.
+   */
   isFirstLaunchForVersion: boolean;
+
+  /**
+   * Check if this is the first time the current build is being launched.
+   */
   isFirstLaunchForBuild: boolean;
 
-  versionHistory: Array<string>;
+
+  /**
+   * Returns the current version of the app.
+   */
   currentVersion: string;
+
+  /**
+   * Returns the previous version of the app.
+   */
   previousVersion: string;
+
+  /**
+   * Returns the version which the user first installed the app.
+   */
   firstInstalledVersion: string;
 
-  buildHistory: Array<string>;
+  /**
+   * Returns a list of versions which the user has had installed, e.g. ['2.1', '3.5', '4.0', '4.1']. The List is ordered from the first version installed to (including) the current version
+   */
+  versionHistory: Array<string>;
+
+
+  /**
+   * Returns the current build of the app.
+   */
   currentBuild: string;
+
+  /**
+   * Returns the previous build of the app.
+   */
   previousBuild: string;
+
+  /**
+   * Returns the build which the user first installed the app.
+   */
   firstInstalledBuild: string;
 
+  /**
+   * Returns a list of builds which the user has had installed, e.g. ['2100', '3500', '4000', '4100']. The List is ordered from the first build installed to (including) the current build.
+   */
+  buildHistory: Array<string>;
+
+
+  /**
+   * Initializes the plugin. Calling this method is required. A good place to call it is at the application onLaunch() method.
+   * @param versionsKey The versions key to be used in the Application Settings
+   * @param buildsKey The builds version  to be used in the Application Settings
+   */
   init(versionsKey?: string, buildsKey?: string): void;
+
+  /**
+   * Check if this is the first launch for a particular version number. Useful if you want to execute some code for the first time launches of a particular version.
+   * @param version The particular version number
+   * @return {boolean}
+   */
   firstLaunchForVersion(version: string): boolean;
+
+  /**
+   * Check if this is the first launch for a particular build number. Useful if you want to execute some code for the first time launches of a particular build.
+   * @param build This particular build number
+   * @return {boolean}
+   */
   firstLaunchForBuild(build: string): boolean;
 }
 
@@ -26,17 +87,17 @@ export const init = (versionTracking: IVersionTracking, versionsKey: string, bui
   // load history
   let versionTrail: { [key: string]: Array<string> } = {};
 
-  const oldVersionList: Array<string> = JSON.parse(appSettings.getString(versionsKey));
-  const oldBuildList: Array<string> = JSON.parse(appSettings.getString(buildsKey));
+  const oldVersionList: Array<string> = JSON.parse(appSettings.getString(versionsKey, null));
+  const oldBuildList: Array<string> = JSON.parse(appSettings.getString(buildsKey, null));
 
   if (oldVersionList == null || oldBuildList == null) {
     versionTracking.isFirstLaunchEver = true;
 
     versionTrail[versionsKey] = [];
-    buildsKey[buildsKey] = [];
+    versionTrail[buildsKey] = [];
   } else {
     versionTrail[versionsKey] = oldVersionList;
-    buildsKey[buildsKey] = oldBuildList;
+    versionTrail[buildsKey] = oldBuildList;
 
     versionTracking.isFirstLaunchEver = false;
   }
@@ -51,7 +112,7 @@ export const init = (versionTracking: IVersionTracking, versionsKey: string, bui
   }
 
   // check if this build was previously launched
-  if (versionTrail[buildsKey].includes(versionTracking.currentVersion)) {
+  if (versionTrail[buildsKey].includes(versionTracking.currentBuild)) {
     versionTracking.isFirstLaunchForBuild = false;
   } else {
     versionTracking.isFirstLaunchForBuild = true;
@@ -75,11 +136,19 @@ export const init = (versionTracking: IVersionTracking, versionsKey: string, bui
   // first Installed Build
   versionTracking.firstInstalledBuild = versionTrail[buildsKey][0] || null;
 
+  // histories
+  versionTracking.versionHistory = versionTrail[versionsKey];
+  versionTracking.buildHistory = versionTrail[buildsKey];
+
   // store the new version stuff
-  appSettings.getString(versionsKey, JSON.stringify(versionTrail[versionsKey]));
-  appSettings.getString(buildsKey, JSON.stringify(versionTrail[buildsKey]));
+  appSettings.setString(versionsKey, JSON.stringify(versionTrail[versionsKey]));
+  appSettings.setString(buildsKey, JSON.stringify(versionTrail[buildsKey]));
 };
 
+/**
+ * Track which versions of your NativeScript App, a user has previously installed.
+ * @module "nativescript-version-tracking"
+ */ /** */
 export const versionTracking: IVersionTracking = {
   initialized: false,
 
@@ -87,23 +156,31 @@ export const versionTracking: IVersionTracking = {
   isFirstLaunchForVersion: null,
   isFirstLaunchForBuild: null,
 
-  versionHistory: [],
   currentVersion: null,
   previousVersion: null,
   firstInstalledVersion: null,
+  versionHistory: [],
 
-  buildHistory: [],
   currentBuild: null,
   previousBuild: null,
   firstInstalledBuild: null,
+  buildHistory: [],
 
   init: () => null,
 
-  firstLaunchForVersion: (version: string) => {
-    return versionTracking.currentVersion.toLowerCase() === version.toLowerCase() && versionTracking.isFirstLaunchForVersion;
+  firstLaunchForVersion: (version: string): boolean => {
+    if (versionTracking.currentVersion) {
+      return versionTracking.currentVersion.toLowerCase() === version.toLowerCase() && versionTracking.isFirstLaunchForVersion;
+    } else {
+      return false;
+    }
   },
 
-  firstLaunchForBuild: (build: string) => {
-    return versionTracking.currentBuild.toLowerCase() === build.toLowerCase() && versionTracking.isFirstLaunchForBuild;
+  firstLaunchForBuild: (build: string): boolean => {
+    if (versionTracking.currentBuild) {
+      return versionTracking.currentBuild.toLowerCase() === build.toLowerCase() && versionTracking.isFirstLaunchForBuild;
+    } else {
+      return false;
+    }
   }
 };
