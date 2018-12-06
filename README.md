@@ -122,7 +122,7 @@ Code released under the [MIT License][license-page].
 Originally inspired by [VersionTrackingPlugin](https://github.com/colbylwilliams/VersionTrackingPlugin).
 
 
-![](https://ga-beacon.appspot.com/UA-130293414-1/nativescript/nativescript-version-tracking?pixel)
+![](https://ga-beacon.appspot.com/UA-130293414-1/bazzite/nativescript-version-tracking?pixel)
 
 
 [contributing]: https://www.bazzite.com/docs/nativescript-version-tracking/contributing?utm_source=github&utm_medium=readme&utm_campaign=nativescript-version-tracking
