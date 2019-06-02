@@ -97,9 +97,9 @@ versionTracking.firstLaunchForBuild('20')          // false
 
 ## Support
 
-For questions and support, use the [Issues section][issues].
-
-You may also want to [follow the company supporting this project on Twitter][twitter].
+- 🐞 For **Bug reports** or **Feature requests**, use the [Issues section][issues].
+- 💬 For **questions**, go to [https://spectrum.chat/bazzite/open-source][spectrum-chat].
+- 🚀 You may also want to [follow the company supporting this project on Twitter][twitter].
 
 ### Professional Support
 
@@ -129,6 +129,7 @@ Originally inspired by [VersionTrackingPlugin](https://github.com/colbylwilliams
 [code-of-conduct]: https://www.bazzite.com/open-source/code-of-conduct?utm_source=github&utm_medium=readme&utm_campaign=nativescript-version-tracking
 [issues]: https://github.com/bazzite/nativescript-version-tracking/issues
 [twitter]: https://twitter.com/BazziteTech
+[spectrum-chat]: https://spectrum.chat/bazzite/login?r=https://spectrum.chat/bazzite/open-source
 [bazzite-website]: https://www.bazzite.com?utm_source=github&utm_medium=readme&utm_campaign=nativescript-version-tracking
 [contact-page]: https://www.bazzite.com/contact?utm_source=github&utm_medium=readme&utm_campaign=nativescript-version-tracking
 [license-page]: https://www.bazzite.com/docs/nativescript-version-tracking/license?utm_source=github&utm_medium=readme&utm_campaign=nativescript-version-tracking
