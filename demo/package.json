@@ -11,7 +11,7 @@
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
     "nativescript-version-tracking": "../src",
-    "tns-core-modules": "~5.3.0"
+    "tns-core-modules": "~5.4.2"
   },
   "devDependencies": {
     "nativescript-dev-typescript": "~0.9.0",
