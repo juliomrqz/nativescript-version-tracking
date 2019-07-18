@@ -2,7 +2,6 @@
 [![Travis](https://img.shields.io/travis/bazzite/nativescript-version-tracking/master.svg)](https://travis-ci.org/bazzite/nativescript-version-tracking)
 [![version](https://img.shields.io/npm/v/nativescript-version-tracking.svg)](https://www.npmjs.com/package/nativescript-version-tracking)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://www.bazzite.com/docs/nativescript-version-tracking/license?utm_source=github&utm_medium=readme&utm_campaign=nativescript-version-tracking)
-[![Greenkeeper badge](https://badges.greenkeeper.io/bazzite/nativescript-version-tracking.svg)](https://greenkeeper.io/)
 
 # NativeScript Version Tracking ![apple](https://cdn3.iconfinder.com/data/icons/picons-social/57/16-apple-32.png) ![android](https://cdn4.iconfinder.com/data/icons/logos-3/228/android-32.png) 
 
