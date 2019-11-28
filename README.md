@@ -27,7 +27,7 @@ This plugin needs to be initialized when your app starts.
 
 ```typescript
 import * as app from 'tns-core-modules/application';
-import * as versionTracking from 'nativescript-version-tracking';
+import versionTracking from 'nativescript-version-tracking';
 
 app.on('launch', () => {
     versionTracking.init();

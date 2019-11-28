@@ -1,6 +1,6 @@
 import * as appSettings from 'tns-core-modules/application-settings';
 
-interface IVersionTracking {
+export interface IVersionTracking {
   initialized: boolean;
 
   /**

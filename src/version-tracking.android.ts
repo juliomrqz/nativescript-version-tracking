@@ -21,4 +21,4 @@ versionTracking.init = (versionsKey = 'tnsVersion', buildsKey = 'tnsBuild') => {
   init(versionTracking, versionsKey, buildsKey);
 };
 
-module.exports = versionTracking;
+export default versionTracking;

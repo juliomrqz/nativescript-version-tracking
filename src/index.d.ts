@@ -1,3 +1,3 @@
 import { versionTracking } from './version-tracking.common';
 
-export = versionTracking;
+export default versionTracking;
