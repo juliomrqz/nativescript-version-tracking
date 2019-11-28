@@ -103,7 +103,7 @@ export const init = (versionTracking: IVersionTracking, versionsKey: string, bui
   }
 
   // check if this version was previously launched
-  if (versionTrail[versionsKey].includes(versionTracking.currentVersion)) {
+  if (versionTrail[versionsKey].indexOf(versionTracking.currentVersion) !== -1) {
     versionTracking.isFirstLaunchForVersion = false;
   } else {
     versionTracking.isFirstLaunchForVersion = true;
@@ -112,7 +112,7 @@ export const init = (versionTracking: IVersionTracking, versionsKey: string, bui
   }
 
   // check if this build was previously launched
-  if (versionTrail[buildsKey].includes(versionTracking.currentBuild)) {
+  if (versionTrail[buildsKey].indexOf(versionTracking.currentBuild) !== -1) {
     versionTracking.isFirstLaunchForBuild = false;
   } else {
     versionTracking.isFirstLaunchForBuild = true;
