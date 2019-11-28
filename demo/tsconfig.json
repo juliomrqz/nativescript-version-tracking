@@ -6,6 +6,8 @@
 		"emitDecoratorMetadata": true,
 		"noEmitHelpers": true,
 		"noEmitOnError": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
 		"lib": [
 			"es6",
 			"dom"

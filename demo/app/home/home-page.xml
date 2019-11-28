@@ -1,5 +1,4 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
-  xmlns:ui="nativescript-version-tracking">
+<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
   <StackLayout class="p-20">
     <Label text="NativeScript Version Tracking" class="t-20 text-center c-black m-b-20" textWrap="true"/>
 

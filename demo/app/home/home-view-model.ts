@@ -1,7 +1,7 @@
-import { Observable } from 'tns-core-modules/data/observable';
-import * as versionTracking from 'nativescript-version-tracking';
+import { Observable } from "tns-core-modules/data/observable";
+import versionTracking from 'nativescript-version-tracking';
 
-export class HelloWorldModel extends Observable {
+export class HomeViewModel extends Observable {
   isFirstLaunchEver: boolean;
   isFirstLaunchForVersion: boolean;
   isFirstLaunchForBuild: boolean;
