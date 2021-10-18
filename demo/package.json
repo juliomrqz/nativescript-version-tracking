@@ -12,7 +12,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "repository": "https://github.com/bazzite/nativescript-version-tracking/tree/develop/demo",
   "dependencies": {
-    "@nativescript/theme": "~2.2.0",
+    "@nativescript/theme": "~3.0.2",
     "nativescript-version-tracking": "../src",
     "tns-core-modules": "~6.2.0"
   },

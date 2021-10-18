@@ -24,10 +24,10 @@
     tns-core-modules-widgets "6.2.3"
     tslib "1.10.0"
 
-"@nativescript/theme@~2.2.0":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@nativescript/theme/-/theme-2.2.1.tgz#12ca952e937506ced272b91969fb3c5143b65b3d"
-  integrity sha512-7vL0muw/FlmvgdKDtT8D4jA7XWFiUakdmZ8gbBjwobZFTF85cS11qbmBltua1mdmuMEm6O1fwa+RH8FQYak+tw==
+"@nativescript/theme@~3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@nativescript/theme/-/theme-3.0.2.tgz#9584ad8988dea937f0f32629b80954de886c6c20"
+  integrity sha512-ypwYyasTFRWbaxNwdqXgql9MUZsq82Stgd+zj4LEjp5cBQPPIWFeJ8uxWdtbpjHjjuTWYW/FCMmnuayOF7uK/g==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
