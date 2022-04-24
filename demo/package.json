@@ -12,13 +12,13 @@
   "license": "SEE LICENSE IN LICENSE",
   "repository": "https://github.com/bazzite/nativescript-version-tracking/tree/develop/demo",
   "dependencies": {
-    "@nativescript/theme": "~2.2.0",
+    "@nativescript/theme": "~2.5.0",
     "nativescript-version-tracking": "../src",
-    "tns-core-modules": "~6.2.0"
+    "tns-core-modules": "~6.5.27"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "1.3.0",
-    "typescript": "3.7.2"
+    "nativescript-dev-webpack": "1.5.1",
+    "typescript": "3.9.10"
   },
   "gitHead": "a6fec076a20f898feabb4466a2c411158c18a100",
   "readme": "NativeScript Application"
